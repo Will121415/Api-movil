@@ -29,9 +29,13 @@ namespace api_movil
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            var connectionString=Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<PulpFreshContext>(p=>
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<PulpFreshContext>(p =>
             p.UseSqlServer(connectionString, b => b.MigrationsAssembly("api-movil")));
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 
             services.AddControllers();

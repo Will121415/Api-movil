@@ -14,18 +14,33 @@ namespace BLL
         }
 
 
-        public String guardarProducto(Product product){
+       public Response<Product> save(Product product){
 
             try
             {
+                
                 _context.Products.Add(product);
                 _context.SaveChanges();
-                return "Todo bien";
+                return new Response<Product>(product);
             }
             catch (System.Exception error)
             {
                 
-                return "error men:"+error;
+                return new Response<Product>("Error:"+error);
+            }
+            
+        }
+        public ResponseAll<Product> AllProducts( ){
+
+            try
+            {
+                List<Product> procts = _context.Products.ToList();
+                return new ResponseAll<Product>(procts);
+            }
+            catch (System.Exception error)
+            {
+                
+                return new ResponseAll<Product>("Error:"+error);
             }
             
         }

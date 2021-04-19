@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj": {}
+    "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj": {
+    "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj",
+        "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\obj\\",
+        "outputPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj": {
-                "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj"
+              "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj"
               },
-              "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
-                "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj"
+              "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj": {
+    "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj",
         "projectName": "DAl",
-        "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj",
+        "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\DAl.csproj",
         "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\obj\\",
+        "outputPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\DAl\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -85,8 +85,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
-                "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj"
+              "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj"
               }
             }
           }
@@ -133,14 +133,14 @@
         }
       }
     },
-    "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
+    "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj",
         "projectName": "Entidad",
-        "projectPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj",
+        "projectPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\Entidad.csproj",
         "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\obj\\",
+        "outputPath": "C:\\Users\\dubam\\Downloads\\CarniceriaWeb-master\\Entidad\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config"

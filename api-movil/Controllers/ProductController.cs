@@ -17,11 +17,13 @@ namespace api_movil.Controllers
     public class ProductoController : ControllerBase
     {
         private readonly ProductService _productService;
+        private readonly CategoryService _CategoryService;
 
         
         public ProductoController( PulpFreshContext _context)
         {
             _productService = new ProductService(_context);
+            _CategoryService = new CategoryService(_context);
         }
 
 
@@ -30,16 +32,22 @@ namespace api_movil.Controllers
         public ActionResult<ProductViewModel> Post(ProductInputModel productoInputModel)
         {
             Product producto = MapearProducto(productoInputModel);
-            var response = _productService.guardarProducto(producto);
-            Console.WriteLine(response);
-            return null;
+            var response = _productService.save(producto);
+            if(response.Error==false)return Ok(response.Object);
+            else return BadRequest(response.Menssage);
+
         }
 
         private Product MapearProducto(ProductInputModel productoInputModel)
         {
             var product = new Product
             {
-                Name = productoInputModel.Name
+            
+                Name = productoInputModel.Name,
+                Unit_Price = productoInputModel.Unit_Price,
+                Category = _CategoryService.Find(int.Parse(productoInputModel.CategoryId)).Object,
+                QuantityStock = productoInputModel.QuantityStock,
+                State = productoInputModel.State,
 
             };
             
