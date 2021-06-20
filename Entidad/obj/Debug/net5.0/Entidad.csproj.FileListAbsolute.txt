@@ -10,3 +10,15 @@ C:\Users\dubam\Downloads\CarniceriaWeb-master\Entidad\obj\Debug\net5.0\Entidad.c
 C:\Users\dubam\Downloads\CarniceriaWeb-master\Entidad\obj\Debug\net5.0\Entidad.dll
 C:\Users\dubam\Downloads\CarniceriaWeb-master\Entidad\obj\Debug\net5.0\ref\Entidad.dll
 C:\Users\dubam\Downloads\CarniceriaWeb-master\Entidad\obj\Debug\net5.0\Entidad.pdb
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Debug\net5.0\Entidad.deps.json
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Debug\net5.0\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Debug\net5.0\ref\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Debug\net5.0\Entidad.pdb
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.csprojAssemblyReference.cache
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.AssemblyInfoInputs.cache
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.AssemblyInfo.cs
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\ref\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Debug\net5.0\Entidad.pdb

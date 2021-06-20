@@ -10,7 +10,7 @@ namespace Entidad
         // [Key]
         public int CategoryId { get; set; }
         public String Name { get; set; }
-        public List<Presentation> Presentations { get; set; }
+        public IList<Presentation> Presentations { get; set; }
 
 
          //Relacion

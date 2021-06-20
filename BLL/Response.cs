@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace BLL
 {
-    public class Response<g>
+    public class Response<T>
     {
 
-        public g Object { get; set; }
+        public T Object { get; set; }
         public String Menssage { get; set; }
         public bool Error { get; set; }
 
-        public Response(g _object)
+        public Response(T _object)
         {
             Object = _object;
             Error = false;
@@ -25,14 +25,14 @@ namespace BLL
         }
     }
 
-    public class ResponseAll<g>
+    public class ResponseAll<T>
     {
 
-        public List<g> List { get; set; }
+        public IList<T> List { get; set; }
         public String Menssage { get; set; }
         public bool Error { get; set; }
 
-        public ResponseAll(List<g> _object)
+        public ResponseAll(IList<T> _object)
         {
             List = _object;
             Error = false;

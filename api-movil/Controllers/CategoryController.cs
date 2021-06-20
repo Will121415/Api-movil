@@ -42,7 +42,7 @@ namespace api_movil.Controllers
            var category = new Category
            {
             Name = categoryInputModel.Name,
-            Presentations = _PresentationService.SelectPresentations(categoryInputModel.PresentationsIds).List,
+            Presentations = _PresentationService.SelectPresentations(categoryInputModel.PresentationsIds).List
 
            };
             

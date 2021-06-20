@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entidad
 {
@@ -9,6 +9,7 @@ namespace Entidad
         // [Key]
         public int ProductId { get; set; }
         public String Name { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Unit_Price { get; set; }
         public Category Category { get; set; }
         public int QuantityStock  { get; set; }

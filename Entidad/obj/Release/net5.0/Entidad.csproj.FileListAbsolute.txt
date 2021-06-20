@@ -1,0 +1,12 @@
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Release\net5.0\Entidad.deps.json
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Release\net5.0\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Release\net5.0\ref\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\bin\Release\net5.0\Entidad.pdb
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.AssemblyInfoInputs.cache
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.AssemblyInfo.cs
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\ref\Entidad.dll
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.pdb
+C:\Users\USUARIO\AndroidStudioProjects\APIS\Api-movil\Entidad\obj\Release\net5.0\Entidad.csprojAssemblyReference.cache

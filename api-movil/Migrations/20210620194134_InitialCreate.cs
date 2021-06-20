@@ -20,22 +20,6 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Persons",
-                columns: table => new
-                {
-                    Identificacion = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    E_mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Persons", x => x.Identificacion);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Presentations",
                 columns: table => new
                 {
@@ -47,6 +31,20 @@ namespace api_movil.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Presentations", x => x.PresentationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    UserName = table.Column<string>(type: "nvarchar(30)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(15)", nullable: true),
+                    Role = table.Column<string>(type: "nvarchar(15)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserName);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,29 +71,6 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    ClientId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ciry = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Neighborhood = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Identificacion = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.ClientId);
-                    table.ForeignKey(
-                        name: "FK_Clients_Persons_Identificacion",
-                        column: x => x.Identificacion,
-                        principalTable: "Persons",
-                        principalColumn: "Identificacion",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CategoriesPresentations",
                 columns: table => new
                 {
@@ -119,17 +94,40 @@ namespace api_movil.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Indentification = table.Column<string>(type: "nvarchar(11)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(130)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(11)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Neighborhood = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Department = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(30)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Indentification);
+                    table.ForeignKey(
+                        name: "FK_Clients_User_UserName",
+                        column: x => x.UserName,
+                        principalTable: "User",
+                        principalColumn: "UserName",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CategoriesPresentations_PresentationsPresentationId",
                 table: "CategoriesPresentations",
                 column: "PresentationsPresentationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clients_Identificacion",
+                name: "IX_Clients_UserName",
                 table: "Clients",
-                column: "Identificacion",
-                unique: true,
-                filter: "[Identificacion] IS NOT NULL");
+                column: "UserName");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -153,7 +151,7 @@ namespace api_movil.Migrations
                 name: "Presentations");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Categories");

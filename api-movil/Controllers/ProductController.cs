@@ -54,5 +54,15 @@ namespace api_movil.Controllers
             
             return product;
         }
+        [HttpGet]
+        public ActionResult<ProductViewModel> AllProduct()
+        {
+            var response = _productService.AllProducts();
+            if (response.List == null) return BadRequest(response.Menssage);
+
+            var products = response.List.Select(p => new ProductViewModel(p));
+
+            return Ok(products);
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace BLL
             
         }
 
-        public ResponseAll<Presentation> SelectPresentations(List<string> Presentations_id){
+        public ResponseAll<Presentation> SelectPresentations(IList<string> Presentations_id){
             var response = AllProducts();
             if(response.List != null){
                 var Select = new List<Presentation>();

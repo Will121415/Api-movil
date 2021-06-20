@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace api_movil.Migrations
 {
     [DbContext(typeof(PulpFreshContext))]
-    [Migration("20210419200751_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210620200935_InitialCreate2")]
+    partial class InitialCreate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,58 +52,38 @@ namespace api_movil.Migrations
 
             modelBuilder.Entity("Entidad.Client", b =>
                 {
-                    b.Property<int>("ClientId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Indentification")
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Ciry")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Department")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Neighborhood")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClientId");
-
-                    b.HasIndex("Identificacion")
-                        .IsUnique()
-                        .HasFilter("[Identificacion] IS NOT NULL");
-
-                    b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("Entidad.Person", b =>
-                {
-                    b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("E_mail")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(130)");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Neighborhood")
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(11)");
 
-                    b.HasKey("Identificacion");
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(30)");
 
-                    b.ToTable("Persons");
+                    b.HasKey("Indentification");
+
+                    b.HasIndex("UserName");
+
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("Entidad.Presentation", b =>
@@ -154,6 +134,25 @@ namespace api_movil.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Entidad.User", b =>
+                {
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("UserName");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("CategoryPresentation", b =>
                 {
                     b.HasOne("Entidad.Category", null)
@@ -171,11 +170,11 @@ namespace api_movil.Migrations
 
             modelBuilder.Entity("Entidad.Client", b =>
                 {
-                    b.HasOne("Entidad.Person", "Person")
-                        .WithOne("Client")
-                        .HasForeignKey("Entidad.Client", "Identificacion");
+                    b.HasOne("Entidad.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserName");
 
-                    b.Navigation("Person");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Entidad.Product", b =>
@@ -192,11 +191,6 @@ namespace api_movil.Migrations
             modelBuilder.Entity("Entidad.Category", b =>
                 {
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Entidad.Person", b =>
-                {
-                    b.Navigation("Client");
                 });
 #pragma warning restore 612, 618
         }
