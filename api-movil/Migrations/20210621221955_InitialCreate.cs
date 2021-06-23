@@ -34,7 +34,7 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserName = table.Column<string>(type: "nvarchar(30)", nullable: false),
@@ -44,7 +44,7 @@ namespace api_movil.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserName);
+                    table.PrimaryKey("PK_Users", x => x.UserName);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,6 +57,8 @@ namespace api_movil.Migrations
                     Unit_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     QuantityStock = table.Column<int>(type: "int", nullable: false),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Iva = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -98,7 +100,7 @@ namespace api_movil.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Indentification = table.Column<string>(type: "nvarchar(11)", nullable: false),
+                    ClientId = table.Column<string>(type: "nvarchar(11)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(130)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(30)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(11)", nullable: true),
@@ -110,13 +112,65 @@ namespace api_movil.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.Indentification);
+                    table.PrimaryKey("PK_Clients", x => x.ClientId);
                     table.ForeignKey(
-                        name: "FK_Clients_User_UserName",
+                        name: "FK_Clients_Users_UserName",
                         column: x => x.UserName,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserName",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invoices",
+                columns: table => new
+                {
+                    IdInvoice = table.Column<string>(type: "nvarchar(4)", nullable: false),
+                    Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SaleDate = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    IdClient = table.Column<string>(type: "nvarchar(11)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invoices", x => x.IdInvoice);
+                    table.ForeignKey(
+                        name: "FK_Invoices_Clients_IdClient",
+                        column: x => x.IdClient,
+                        principalTable: "Clients",
+                        principalColumn: "ClientId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InvoiceDetails",
+                columns: table => new
+                {
+                    IdDetail = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UnitValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    QuantityProduct = table.Column<float>(type: "real", nullable: false),
+                    Discount = table.Column<float>(type: "real", nullable: false),
+                    TolalDetail = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IdProduct = table.Column<int>(type: "int", nullable: false),
+                    IdInvoice = table.Column<string>(type: "nvarchar(4)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceDetails", x => x.IdDetail);
+                    table.ForeignKey(
+                        name: "FK_InvoiceDetails_Invoices_IdInvoice",
+                        column: x => x.IdInvoice,
+                        principalTable: "Invoices",
+                        principalColumn: "IdInvoice",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_InvoiceDetails_Products_IdProduct",
+                        column: x => x.IdProduct,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -128,6 +182,21 @@ namespace api_movil.Migrations
                 name: "IX_Clients_UserName",
                 table: "Clients",
                 column: "UserName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InvoiceDetails_IdInvoice",
+                table: "InvoiceDetails",
+                column: "IdInvoice");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InvoiceDetails_IdProduct",
+                table: "InvoiceDetails",
+                column: "IdProduct");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Invoices_IdClient",
+                table: "Invoices",
+                column: "IdClient");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -142,19 +211,25 @@ namespace api_movil.Migrations
                 name: "CategoriesPresentations");
 
             migrationBuilder.DropTable(
-                name: "Clients");
-
-            migrationBuilder.DropTable(
-                name: "Products");
+                name: "InvoiceDetails");
 
             migrationBuilder.DropTable(
                 name: "Presentations");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Invoices");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

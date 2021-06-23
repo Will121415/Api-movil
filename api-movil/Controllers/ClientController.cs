@@ -30,10 +30,10 @@ namespace api_movil.Controllers
             return Ok(new ClientViewModel(response.Object));
 
         }
-        [HttpGet("{identification}")]
-        public ActionResult<ClientViewModel> SearchById(string identification)
+        [HttpGet("{clientId}")]
+        public ActionResult<ClientViewModel> SearchById(string clientId)
         {
-            var response =  clientService.SearchById(identification);
+            var response =  clientService.SearchById(clientId);
 
             if(response.Object == null) return NotFound("Cliente no encontrado!");
             var client = new ClientViewModel(response.Object);
@@ -44,7 +44,7 @@ namespace api_movil.Controllers
         {
             Client client = new Client();
 
-            client.Indentification = clientInput.Indentification;
+            client.ClientId = clientInput.ClientId;
             client.Name = clientInput.Name;
             client.LastName = clientInput.LastName;
             client.Phone = clientInput.Phone;
@@ -80,10 +80,10 @@ namespace api_movil.Controllers
 
         }
 
-        [HttpDelete("{identification}")]
-        public ActionResult<ClientViewModel> Delete(string identification)
+        [HttpPut("{clientId}")]
+        public ActionResult<ClientViewModel> ChangeStatus(string clientId)
         {
-            var response =  clientService.Delete(identification);
+            var response =  clientService.ChangeStatus(clientId);
 
             if (response.Object == null) return BadRequest(response.Menssage);
 

@@ -27,12 +27,12 @@ namespace BLL
                 return new Response<Client>($"Error del aplicacion: {e.Message}");
             }
         }
-        public Response<Client> SearchById(string identification)
+        public Response<Client> SearchById(string clientId)
         {
             try 
             {
                 Client client = context.Clients.Include(u => u.User)
-                                                .Where(c => c.Indentification == identification).FirstOrDefault();
+                                                .Where(c => c.ClientId == clientId).FirstOrDefault();
                 return new Response<Client>(client);
             }
             catch (Exception e)
@@ -65,18 +65,22 @@ namespace BLL
             }
         }
 
-        public Response<Client> Delete(string identification)
+       public Response<Client> ChangeStatus(String clientId)
         {
-            try {
-                var clientSearch = context.Clients.Find(identification);
-                if (clientSearch != null) {
-                    context.Clients.Remove(clientSearch);
+            try{
+                Client oldClient = context.Clients.Include(u => u.User)
+                         .Where(c => c.ClientId == clientId).FirstOrDefault();
+                if(oldClient != null)
+                {
+                    oldClient.User.Status = (oldClient.User.Status == "Active") ? "Inactive": "Active";
+                    context.Users.Update(oldClient.User);
                     context.SaveChanges();
                 }
-
-                return new Response<Client>(clientSearch);
-            } catch (Exception e) {
-                return new Response<Client>($"Error del aplicacion: {e.Message}");
+                return new Response<Client>(oldClient);
+            }
+            catch (Exception e)
+            {
+                return new Response<Client>($"Error de la Aplicación: {e.Message}");
             }
         }
 
@@ -84,11 +88,11 @@ namespace BLL
         {
             try {
                 var oldClient =  context.Clients.Include(c => c.User)
-                            .Where(c => c.Indentification == newClient.Indentification).FirstOrDefault();
+                            .Where(c => c.ClientId == newClient.ClientId).FirstOrDefault();
 
                 if (oldClient != null)
                 {
-                    oldClient.Indentification =  newClient.Indentification;
+                    oldClient.ClientId =  newClient.ClientId;
                     oldClient.Name = newClient.Name;
                     oldClient.LastName = newClient.LastName;
                     oldClient.Phone =  newClient.Phone;

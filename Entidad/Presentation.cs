@@ -10,7 +10,7 @@ namespace Entidad
         // [Key]
         public int PresentationId { get; set; }
         public String Measure { get; set; }
-        public String NPresentation { get; set; }
+        public String Name { get; set; }
 
         //realcion
         public List<Category> Categories { get; set; }

@@ -41,7 +41,7 @@ namespace api_movil.Controllers
            var presentation = new Presentation
            {
             Measure = presentationInputModel.Measure,
-            NPresentation = presentationInputModel.NPresentation
+            Name = presentationInputModel.Name
 
            };
             

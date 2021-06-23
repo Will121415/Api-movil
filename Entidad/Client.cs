@@ -8,7 +8,7 @@ namespace Entidad
     {
         [Key]
         [Column(TypeName= "nvarchar(11)")]
-        public string Indentification { get; set; }
+        public string ClientId { get; set; }
         [Column(TypeName= "nvarchar(130)")]
         public string Name { get; set; }
         [Column(TypeName= "nvarchar(30)")]

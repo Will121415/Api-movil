@@ -9,7 +9,7 @@ namespace api_movil.Models
         [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         [MinLength(10,ErrorMessage="El campo debe tener MINIMO 10 caracteres")]
         [StringLength(10,ErrorMessage="El campo debe tener MAXIMO 10 caracteres")]
-        public string Indentification { get; set; }
+        public string ClientId { get; set; }
         [Required]
         [StringLength(10,ErrorMessage="El campo debe tener MAXIMO 10 caracteres")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage="Solo se permiten letras")]
@@ -44,7 +44,7 @@ namespace api_movil.Models
 
         public ClientViewModel(Client client)
         {
-            Indentification = client.Indentification;
+            ClientId = client.ClientId;
             Name = client.Name;
             LastName = client.LastName;
             Phone = client.Phone;

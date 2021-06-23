@@ -48,6 +48,7 @@ namespace api_movil.Controllers
                 Category = _CategoryService.Find(int.Parse(productoInputModel.CategoryId)).Object,
                 QuantityStock = productoInputModel.QuantityStock,
                 State = productoInputModel.State,
+                Description = productoInputModel.Description
 
             };
             
@@ -60,9 +61,9 @@ namespace api_movil.Controllers
             var response = _productService.AllProducts();
             if (response.List == null) return BadRequest(response.Menssage);
 
-            var products = response.List.Select(p => new ProductViewModel(p));
+            // var products = response.List.Select(p => new ProductViewModel(p));
 
-            return Ok(products);
+            return Ok(response.List);
         }
     }
 }

@@ -14,6 +14,12 @@ namespace Entidad
         public Category Category { get; set; }
         public int QuantityStock  { get; set; }
         public String State { get; set; }
+        public int Iva { get; set; }
+        public string Description { get; set; }
+        
+        
+        
+        
 
          //Relacion
          public int CategoryId { get; set; }

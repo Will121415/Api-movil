@@ -3,7 +3,6 @@ using Entidad;
 
 namespace api_movil.Models
 {
-   
     public class UserInputModel
     {
         [Required]

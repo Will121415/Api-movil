@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace api_movil.Models
 {
-      public class  ProductInputModel
+    public class  ProductInputModel
     {
-
-
-        
+        public int  IdProduct { get; set; }
         public String Name { get; set; }
         public decimal Unit_Price { get; set; }
         public String CategoryId { get; set; }
         public int QuantityStock  { get; set; }
         public String State { get; set; }
+        public int Iva { get; set; }
+        public string Description { get; set; }
+
 
          
     }

@@ -13,7 +13,7 @@ namespace api_movil.Models
 
         
         public String Measure { get; set; }
-        public String NPresentation { get; set; }
+        public String Name { get; set; }
 
          
     }
@@ -25,7 +25,7 @@ namespace api_movil.Models
         public PresentationViewModel (Presentation presentation){
             PresentationId = presentation.PresentationId;
             Measure = presentation.Measure;
-            NPresentation = presentation.NPresentation;
+            Name = presentation.Name;
             
             
         }

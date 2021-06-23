@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace api_movil.Migrations
 {
     [DbContext(typeof(PulpFreshContext))]
-    [Migration("20210620194134_InitialCreate")]
+    [Migration("20210621221955_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace api_movil.Migrations
 
             modelBuilder.Entity("Entidad.Client", b =>
                 {
-                    b.Property<string>("Indentification")
+                    b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Address")
@@ -79,11 +79,72 @@ namespace api_movil.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("Indentification");
+                    b.HasKey("ClientId");
 
                     b.HasIndex("UserName");
 
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("Entidad.Invoice", b =>
+                {
+                    b.Property<string>("IdInvoice")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("IdClient")
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("SaleDate")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("IdInvoice");
+
+                    b.HasIndex("IdClient");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("Entidad.InvoiceDetail", b =>
+                {
+                    b.Property<int>("IdDetail")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("Discount")
+                        .HasColumnType("real");
+
+                    b.Property<string>("IdInvoice")
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("IdProduct")
+                        .HasColumnType("int");
+
+                    b.Property<float>("QuantityProduct")
+                        .HasColumnType("real");
+
+                    b.Property<decimal>("TolalDetail")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("IdDetail");
+
+                    b.HasIndex("IdInvoice");
+
+                    b.HasIndex("IdProduct");
+
+                    b.ToTable("InvoiceDetails");
                 });
 
             modelBuilder.Entity("Entidad.Presentation", b =>
@@ -112,6 +173,12 @@ namespace api_movil.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Iva")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -150,7 +217,7 @@ namespace api_movil.Migrations
 
                     b.HasKey("UserName");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CategoryPresentation", b =>
@@ -177,6 +244,26 @@ namespace api_movil.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Entidad.Invoice", b =>
+                {
+                    b.HasOne("Entidad.Client", null)
+                        .WithMany()
+                        .HasForeignKey("IdClient");
+                });
+
+            modelBuilder.Entity("Entidad.InvoiceDetail", b =>
+                {
+                    b.HasOne("Entidad.Invoice", null)
+                        .WithMany("InvoiceDetails")
+                        .HasForeignKey("IdInvoice");
+
+                    b.HasOne("Entidad.Product", null)
+                        .WithMany()
+                        .HasForeignKey("IdProduct")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entidad.Product", b =>
                 {
                     b.HasOne("Entidad.Category", "Category")
@@ -191,6 +278,11 @@ namespace api_movil.Migrations
             modelBuilder.Entity("Entidad.Category", b =>
                 {
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Entidad.Invoice", b =>
+                {
+                    b.Navigation("InvoiceDetails");
                 });
 #pragma warning restore 612, 618
         }
