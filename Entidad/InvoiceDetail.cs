@@ -11,14 +11,11 @@ namespace Entidad
         public int IdDetail { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal UnitValue { get; set; }
-        public float QuantityProduct { get; set; }
+        public int QuantityProduct { get; set; }
         public float Discount { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal TolalDetail { get; set; }
-        public int IdProduct { get; set; }
-        [NotMapped]
-        public string InvoiceIdInvoice { get; set; }
-        [NotMapped]
+
         public  Product Product { get; set; }
         
         
@@ -28,11 +25,10 @@ namespace Entidad
             
         }
 
-        public InvoiceDetail(Product product, float quantity, float discount, decimal price)
+        public InvoiceDetail(Product _product, int quantity, float discount, decimal price)
         {
-            Product = product;
+            Product = _product;
             UnitValue = price;
-            IdProduct = product.ProductId;
             QuantityProduct = quantity;
             Discount = discount;
             CalculateTotalDetail();

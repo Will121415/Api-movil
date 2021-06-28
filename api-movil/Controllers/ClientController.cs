@@ -80,7 +80,7 @@ namespace api_movil.Controllers
 
         }
 
-        [HttpPut("{clientId}")]
+        [HttpPut("change-status/{clientId}")]
         public ActionResult<ClientViewModel> ChangeStatus(string clientId)
         {
             var response =  clientService.ChangeStatus(clientId);

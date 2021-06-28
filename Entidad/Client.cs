@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Entidad
 {
@@ -24,6 +25,7 @@ namespace Entidad
         [Column(TypeName= "nvarchar(20)")]
         public string Department { get; set; }
         [Column(TypeName= "nvarchar(30)")]
-        public virtual User User { get; set; }
+        public virtual User User { get; set; } 
+        public IList<Invoice> Invoice  { get; set; }
     }
 }

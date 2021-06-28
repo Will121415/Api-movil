@@ -19,29 +19,5 @@ namespace DAl
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Product>()
-            .HasOne(p=>p.Category)
-            .WithOne(p=>p.Product)
-            .HasForeignKey<Product>(b => b.CategoryId);
-
-            modelBuilder.Entity<Category>()
-            .HasMany(p=>p.Presentations)
-            .WithMany(p=>p.Categories)
-            .UsingEntity(j => j.ToTable("CategoriesPresentations"));
-
-             modelBuilder.Entity<InvoiceDetail>()
-            .HasOne<Product>().WithMany()
-            .HasForeignKey(d => d.IdProduct);
-
-            modelBuilder.Entity<Invoice>()
-            .HasOne<Client>().WithMany()
-            .HasForeignKey(i => i.IdClient);
-
-
-        }
-
     }
 }

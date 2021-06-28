@@ -9,23 +9,21 @@ namespace api_movil.Models
 {
     public class  ProductInputModel
     {
-        public int  IdProduct { get; set; }
         public String Name { get; set; }
         public decimal Unit_Price { get; set; }
-        public String CategoryId { get; set; }
         public int QuantityStock  { get; set; }
         public String State { get; set; }
         public int Iva { get; set; }
         public string Description { get; set; }
-
-
-         
+        public String CategoryId { get; set; }
+        public IList<String> PresentationsIds { get; set; }
     }
 
     public class ProductViewModel : ProductInputModel {
 
         public Category Category { get; set; }
         public int ProductId { get; set; }
+        public IList<Presentation> Presentations { get; set; }
         public ProductViewModel  (){}
         public ProductViewModel (Product product){
             
@@ -35,6 +33,7 @@ namespace api_movil.Models
             Category = product.Category;
             QuantityStock = product.QuantityStock;
             State = product.State;
+            Presentations = product.Presentations;
             
         }
     }

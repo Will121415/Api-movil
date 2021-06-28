@@ -35,7 +35,7 @@ namespace BLL
 
             try
             {
-                List<Product> procts = _context.Products.Include( c => c.Category).ToList();
+                List<Product> procts = _context.Products.Include(P=>P.Presentations).Include( c => c.Category).ToList();
                 return new ResponseAll<Product>(procts);
             }
             catch (System.Exception error)
@@ -45,5 +45,20 @@ namespace BLL
             }
             
         }
+
+        public Response<Product> FindById(int _productId){
+            try
+            {
+                Product procts = _context.Products.Where(P=>P.ProductId==_productId).FirstOrDefault();
+                return new Response<Product>(procts);
+            }
+            catch (System.Exception error)
+            {
+                
+                return new Response<Product>("Error:"+error);
+            }
+        }
+
+
     }
 }

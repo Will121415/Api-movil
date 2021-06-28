@@ -13,8 +13,7 @@ namespace Entidad
         public String Name { get; set; }
 
         //realcion
-        public List<Category> Categories { get; set; }
-
-
+        public IList<Category> Categories { get; set; }
+        public IList<Product> Products { get; set; }
     }
 }

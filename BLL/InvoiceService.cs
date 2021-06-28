@@ -2,31 +2,33 @@ using System;
 using System.Linq;
 using DAl;
 using Entidad;
+using Microsoft.EntityFrameworkCore;
 
 namespace BLL
 {
     public class InvoiceService
     {
          private readonly PulpFreshContext _context;
+         private readonly ProductService _ProductService;
         public InvoiceService(PulpFreshContext freshContext)
         {
             _context = freshContext;
+            _ProductService= new ProductService(_context);
         }
         public Response<Invoice> Save(Invoice invoice)
         {
             try {
 
-                Invoice newInvoice = new Invoice(invoice.IdInvoice, invoice.IdClient);
+                Invoice newInvoice = new Invoice( invoice.Client);
                 foreach (InvoiceDetail detail in invoice.InvoiceDetails)
                 {
+                    if(detail.Product.QuantityStock-detail.QuantityProduct<0)
+                        return new Response<Invoice>("No hay suficiente stock");
                     newInvoice.AddInvoiceDetails(detail.Product,detail.QuantityProduct, detail.Discount,detail.UnitValue);
+                    detail.Product.discountQuantityStock(detail.QuantityProduct);
+                    _context.Products.Update(detail.Product);
                 }
                 newInvoice.CalculateTotal();
-                foreach (InvoiceDetail detail1 in newInvoice.InvoiceDetails)
-                {
-                    detail1.Product = null;
-                }
-
                 _context.Invoices.Add(newInvoice);
                 _context.SaveChanges();
                 return new Response<Invoice>(newInvoice);
@@ -38,40 +40,11 @@ namespace BLL
         public ResponseAll<Invoice> AllInvoices()
         {
             try {
-                var invoices = _context.Invoices.ToList();
-                var clients = _context.Clients.ToList();
-                var details = _context.InvoiceDetails.ToList();
-                var products = _context.Products.ToList();
-
-                foreach (Invoice invoice1 in invoices) {
-                    foreach (Client client in clients) {
-                        if (invoice1.IdClient == client.ClientId) {
-                            invoice1.Client = client;
-                            break;
-                        }
-                    }
-                }
-
-                foreach (InvoiceDetail detail in details) {
-                    foreach (Product product in products) {
-                        if (detail.IdProduct == product.ProductId) {
-                            detail.Product = product;
-                            break;
-                        }
-                    }
-                }
-
-                 foreach (Invoice invoice in invoices) {
-                    foreach(InvoiceDetail detail in details) {
-                        if (invoice.IdInvoice == detail.InvoiceIdInvoice) {
-                            invoice.InvoiceDetails.Add(detail);
-                        }
-                    }
-
-                }
-
+                var invoices = _context.Invoices.Include(I=>I.Client)
+                    .Include(d=>d.InvoiceDetails)
+                    .ThenInclude(InvoiceDetails => InvoiceDetails.Product)
+                    .ToList();
                 return new ResponseAll<Invoice>(invoices);
-
             } catch (Exception e ) {
                 return new ResponseAll<Invoice>($"Error del aplicacion: {e.Message}");
             }

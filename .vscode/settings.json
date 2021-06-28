@@ -1,4 +1,3 @@
 {
-    "appService.deploySubpath": "api-movil\\publish",
-    "appService.defaultWebAppToDeploy": "/subscriptions/146616b0-2648-4fa5-b084-882d5d102049/resourceGroups/PulpFreash/providers/Microsoft.Web/sites/PulpFresh"
+    "appService.deploySubpath": "api-movil\\publish"
 }

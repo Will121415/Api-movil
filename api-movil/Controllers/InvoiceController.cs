@@ -13,9 +13,13 @@ namespace api_movil.Controllers
     public class InvoiceController: ControllerBase
     {
         private readonly InvoiceService _invoiceService;
+        private readonly ProductService _productService;
+        private readonly ClientService _clientService;
         public InvoiceController(PulpFreshContext freshContext)
         {
             _invoiceService = new InvoiceService(freshContext);
+            _productService = new ProductService (freshContext);
+            _clientService = new ClientService(freshContext);
         }
 
         [HttpPost]
@@ -33,27 +37,17 @@ namespace api_movil.Controllers
         private Invoice MapInvoice(InvoiceImputModel invoiceImput)
         {
             Invoice invoice = new Invoice();
-
-            invoice.IdInvoice = invoiceImput.IdInvoice;
-            invoice.Subtotal = invoiceImput.Subtotal;
-            invoice.TotalIva = invoiceImput.TotalIva;
-            invoice.Total = invoiceImput.Total;
+            Client client = _clientService.SearchById(invoiceImput.IdClient).Object;
             invoice.SaleDate = invoiceImput.SaleDate;
-            invoice.IdClient = invoiceImput.IdClient;
+            invoice.Client =  client;
 
             foreach (InvoiceDetailInputModel detailModel in invoiceImput.InvoiceDetails) {
 
                 InvoiceDetail detail =  new InvoiceDetail();
-
-                detail.IdDetail = detailModel.IdDetail;
-                detail.UnitValue =detailModel.UnitValue;
+                var _product = _productService.FindById(detailModel.IdProduct).Object; 
                 detail.QuantityProduct = detailModel.QuantityProduct;
                 detail.Discount = detailModel.Discount;
-                detail.TolalDetail =detailModel.TolalDetail;
-                detail.IdProduct = detailModel.IdProduct;
-
-                detail.Product  = new  Product();
-                detail.Product = MapProduct(detailModel.Product);
+                detail.Product = _product;
                 invoice.InvoiceDetails.Add(detail);
             }
 
@@ -64,7 +58,6 @@ namespace api_movil.Controllers
         {
             Product product = new Product();
             
-            product.ProductId = productModel.IdProduct;
             product.Name = productModel.Name;
             product.State = productModel.State;
             product.Unit_Price = productModel.Unit_Price;
@@ -86,7 +79,6 @@ namespace api_movil.Controllers
                 return Ok(invoices);
         } 
      
-
         
     }
 }

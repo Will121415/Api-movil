@@ -9,20 +9,17 @@ namespace Entidad
     public class Invoice
     {
         [Key]
-        [Column(TypeName= "nvarchar(4)")]
-        public string IdInvoice{ get; set; }
+        public int InvoiceId{ get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Subtotal { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalIva { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Total { get; set; }
-        [Column(TypeName= "nvarchar(30)")]
-        public string SaleDate { get; set; }
-        [Column(TypeName= "nvarchar(11)")]
-        public string IdClient { get; set; }
+        [DataType(DataType.Date)]  
+        [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)] 
+        public DateTime SaleDate { get; set; }
         
-        [NotMapped]
         public  Client Client { get; set; }
 
         [Column(TypeName= "nvarchar(4)")]
@@ -33,15 +30,14 @@ namespace Entidad
             InvoiceDetails = new List<InvoiceDetail>();
         }
 
-        public Invoice(string idIvoice, string idClient)
+        public Invoice( Client _Client)
         {
-            IdInvoice = idIvoice;
-            IdClient = idClient;
-            SaleDate = DateTime.Now.ToString("dd/MM/yyyy"); 
+            Client = _Client;
+            SaleDate = DateTime.Now; 
             InvoiceDetails = new List<InvoiceDetail>();
         }
 
-        public void AddInvoiceDetails(Product product, float quantity, float discount, decimal price)
+        public void AddInvoiceDetails(Product product, int quantity, float discount, decimal price)
         {
             InvoiceDetail invoiceDetail = new InvoiceDetail(product, quantity, discount, price);
             InvoiceDetails.Add(invoiceDetail);

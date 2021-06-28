@@ -20,17 +20,20 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Presentations",
+                name: "Invoices",
                 columns: table => new
                 {
-                    PresentationId = table.Column<int>(type: "int", nullable: false)
+                    InvoiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Measure = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NPresentation = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SaleDate = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    IdClient = table.Column<string>(type: "nvarchar(11)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Presentations", x => x.PresentationId);
+                    table.PrimaryKey("PK_Invoices", x => x.InvoiceId);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,27 +76,27 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoriesPresentations",
+                name: "InvoiceDetails",
                 columns: table => new
                 {
-                    CategoriesCategoryId = table.Column<int>(type: "int", nullable: false),
-                    PresentationsPresentationId = table.Column<int>(type: "int", nullable: false)
+                    IdDetail = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UnitValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    QuantityProduct = table.Column<float>(type: "real", nullable: false),
+                    Discount = table.Column<float>(type: "real", nullable: false),
+                    TolalDetail = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IdProduct = table.Column<int>(type: "int", nullable: false),
+                    IdInvoice = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriesPresentations", x => new { x.CategoriesCategoryId, x.PresentationsPresentationId });
+                    table.PrimaryKey("PK_InvoiceDetails", x => x.IdDetail);
                     table.ForeignKey(
-                        name: "FK_CategoriesPresentations_Categories_CategoriesCategoryId",
-                        column: x => x.CategoriesCategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoriesPresentations_Presentations_PresentationsPresentationId",
-                        column: x => x.PresentationsPresentationId,
-                        principalTable: "Presentations",
-                        principalColumn: "PresentationId",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_InvoiceDetails_Invoices_IdInvoice",
+                        column: x => x.IdInvoice,
+                        principalTable: "Invoices",
+                        principalColumn: "InvoiceId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,61 +125,32 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoices",
+                name: "Presentations",
                 columns: table => new
                 {
-                    IdInvoice = table.Column<string>(type: "nvarchar(4)", nullable: false),
-                    Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SaleDate = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    IdClient = table.Column<string>(type: "nvarchar(11)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Invoices", x => x.IdInvoice);
-                    table.ForeignKey(
-                        name: "FK_Invoices_Clients_IdClient",
-                        column: x => x.IdClient,
-                        principalTable: "Clients",
-                        principalColumn: "ClientId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "InvoiceDetails",
-                columns: table => new
-                {
-                    IdDetail = table.Column<int>(type: "int", nullable: false)
+                    PresentationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UnitValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    QuantityProduct = table.Column<float>(type: "real", nullable: false),
-                    Discount = table.Column<float>(type: "real", nullable: false),
-                    TolalDetail = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdProduct = table.Column<int>(type: "int", nullable: false),
-                    IdInvoice = table.Column<string>(type: "nvarchar(4)", nullable: true)
+                    Measure = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoriesCategoryId = table.Column<int>(type: "int", nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvoiceDetails", x => x.IdDetail);
+                    table.PrimaryKey("PK_Presentations", x => x.PresentationId);
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Invoices_IdInvoice",
-                        column: x => x.IdInvoice,
-                        principalTable: "Invoices",
-                        principalColumn: "IdInvoice",
+                        name: "FK_Presentations_Categories_CategoriesCategoryId",
+                        column: x => x.CategoriesCategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Products_IdProduct",
-                        column: x => x.IdProduct,
+                        name: "FK_Presentations_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoriesPresentations_PresentationsPresentationId",
-                table: "CategoriesPresentations",
-                column: "PresentationsPresentationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_UserName",
@@ -189,14 +163,14 @@ namespace api_movil.Migrations
                 column: "IdInvoice");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InvoiceDetails_IdProduct",
-                table: "InvoiceDetails",
-                column: "IdProduct");
+                name: "IX_Presentations_CategoriesCategoryId",
+                table: "Presentations",
+                column: "CategoriesCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invoices_IdClient",
-                table: "Invoices",
-                column: "IdClient");
+                name: "IX_Presentations_ProductId",
+                table: "Presentations",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -208,7 +182,7 @@ namespace api_movil.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriesPresentations");
+                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "InvoiceDetails");
@@ -217,19 +191,16 @@ namespace api_movil.Migrations
                 name: "Presentations");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "Invoices");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Clients");
-
-            migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Users");
         }
     }
 }

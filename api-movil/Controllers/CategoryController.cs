@@ -33,8 +33,7 @@ namespace api_movil.Controllers
         {
             Category category = MapearCategory(categoryInputModel);
             var response = _categoryService.save(category);
-            if(response.Error==false)return Ok(response.Object);
-            else return BadRequest(response.Menssage);
+            return (response.Error==false)? Ok(response.Object):  BadRequest(response.Menssage);
         }
 
         private Category MapearCategory(CategoryInputModel categoryInputModel)
@@ -43,10 +42,7 @@ namespace api_movil.Controllers
            {
             Name = categoryInputModel.Name,
             Presentations = _PresentationService.SelectPresentations(categoryInputModel.PresentationsIds).List
-
            };
-            
-            
            return category;
         }
     }
