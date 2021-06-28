@@ -1,3 +1,4 @@
 {
-    "appService.deploySubpath": "api-movil\\publish"
+    "appService.deploySubpath": "api-movil\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/41608c41-d6f9-49bc-857b-a8f2b53fe835/resourceGroups/FreshPulpDB/providers/Microsoft.Web/sites/apiFreshPulp"
 }

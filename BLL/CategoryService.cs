@@ -3,6 +3,7 @@ using DAl;
 using Entidad;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BLL
 {
@@ -29,6 +30,19 @@ namespace BLL
                 return new Response<Category>("Error:"+error);
             }
             
+        }
+
+        public ResponseAll<Category> AllCategory()
+        {
+            try
+            {
+                IList<Category> categories = _context.Categories.Include(p => p.Presentations).ToList();
+                return new ResponseAll<Category>(categories);
+            }
+            catch (Exception e)
+            {
+                return new ResponseAll<Category>($"Error del aplicacion: {e.Message}");
+            }
         }
         public Response<Category> Find(int categoryId){
 

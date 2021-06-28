@@ -45,6 +45,19 @@ namespace api_movil.Controllers
            };
            return category;
         }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<CategoryViewModel>> AllCategory()
+        {
+            var response = _categoryService.AllCategory();
+
+            if (response.List == null) return BadRequest(response.Menssage);
+
+            var categories = response.List.Select(c => new CategoryViewModel(c));
+
+            return Ok(categories);
+
+        }
     }
 }
 
