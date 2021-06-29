@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace api_movil.Migrations
 {
     [DbContext(typeof(PulpFreshContext))]
-    [Migration("20210627054550_FixTypeOfProp")]
-    partial class FixTypeOfProp
+    [Migration("20210629055500_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,13 @@ namespace api_movil.Migrations
 
             modelBuilder.Entity("CategoryPresentation", b =>
                 {
-                    b.Property<int>("PresentationsCategoryId")
+                    b.Property<int>("CategoriesCategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("PresentationsPresentationId")
                         .HasColumnType("int");
 
-                    b.HasKey("PresentationsCategoryId", "PresentationsPresentationId");
+                    b.HasKey("CategoriesCategoryId", "PresentationsPresentationId");
 
                     b.HasIndex("PresentationsPresentationId");
 
@@ -94,7 +94,7 @@ namespace api_movil.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("IdClient")
+                    b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<DateTime>("SaleDate")
@@ -110,6 +110,8 @@ namespace api_movil.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("InvoiceId");
+
+                    b.HasIndex("ClientId");
 
                     b.ToTable("Invoices");
                 });
@@ -127,7 +129,7 @@ namespace api_movil.Migrations
                     b.Property<int?>("IdInvoice")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdProduct")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("QuantityProduct")
@@ -142,6 +144,8 @@ namespace api_movil.Migrations
                     b.HasKey("IdDetail");
 
                     b.HasIndex("IdInvoice");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("InvoiceDetails");
                 });
@@ -175,6 +179,9 @@ namespace api_movil.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Iva")
@@ -237,7 +244,7 @@ namespace api_movil.Migrations
                 {
                     b.HasOne("Entidad.Category", null)
                         .WithMany()
-                        .HasForeignKey("PresentationsCategoryId")
+                        .HasForeignKey("CategoriesCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -257,11 +264,26 @@ namespace api_movil.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Entidad.Invoice", b =>
+                {
+                    b.HasOne("Entidad.Client", "Client")
+                        .WithMany("Invoice")
+                        .HasForeignKey("ClientId");
+
+                    b.Navigation("Client");
+                });
+
             modelBuilder.Entity("Entidad.InvoiceDetail", b =>
                 {
                     b.HasOne("Entidad.Invoice", null)
                         .WithMany("InvoiceDetails")
                         .HasForeignKey("IdInvoice");
+
+                    b.HasOne("Entidad.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Entidad.Product", b =>
@@ -293,6 +315,11 @@ namespace api_movil.Migrations
             modelBuilder.Entity("Entidad.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Entidad.Client", b =>
+                {
+                    b.Navigation("Invoice");
                 });
 
             modelBuilder.Entity("Entidad.Invoice", b =>

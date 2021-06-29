@@ -13,6 +13,7 @@ namespace Entidad
         [Column(TypeName = "decimal(18,2)")]
         public decimal Unit_Price { get; set; }
         public int QuantityStock  { get; set; }
+        public String Image { get; set; }
         public String State { get; set; }
         public int Iva { get; set; }
         public string Description { get; set; }

@@ -59,6 +59,26 @@ namespace BLL
             }
         }
 
+        public Response<Product> ChangeStatus(int productId)
+        {
+            try{
+
+                Product oldProduct = _context.Products.Where(P=>P.ProductId==productId).FirstOrDefault();
+
+                if(oldProduct != null)
+                {
+                    oldProduct.State = (oldProduct.State == "Active") ? "Inactive": "Active";
+                    _context.Products.Update(oldProduct);
+                    _context.SaveChanges();
+                }
+                return new Response<Product>(oldProduct);
+            }
+            catch (Exception e)
+            {
+                return new Response<Product>($"Error de la Aplicación: {e.Message}");
+            }
+        }
+
 
     }
 }

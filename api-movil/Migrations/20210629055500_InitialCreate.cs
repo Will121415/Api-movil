@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace api_movil.Migrations
 {
@@ -20,20 +21,17 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoices",
+                name: "Presentations",
                 columns: table => new
                 {
-                    InvoiceId = table.Column<int>(type: "int", nullable: false)
+                    PresentationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SaleDate = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    IdClient = table.Column<string>(type: "nvarchar(11)", nullable: true)
+                    Measure = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invoices", x => x.InvoiceId);
+                    table.PrimaryKey("PK_Presentations", x => x.PresentationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,6 +57,7 @@ namespace api_movil.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Unit_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     QuantityStock = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Iva = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -76,27 +75,27 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InvoiceDetails",
+                name: "CategoryPresentation",
                 columns: table => new
                 {
-                    IdDetail = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UnitValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    QuantityProduct = table.Column<float>(type: "real", nullable: false),
-                    Discount = table.Column<float>(type: "real", nullable: false),
-                    TolalDetail = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdProduct = table.Column<int>(type: "int", nullable: false),
-                    IdInvoice = table.Column<int>(type: "int", nullable: true)
+                    CategoriesCategoryId = table.Column<int>(type: "int", nullable: false),
+                    PresentationsPresentationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvoiceDetails", x => x.IdDetail);
+                    table.PrimaryKey("PK_CategoryPresentation", x => new { x.CategoriesCategoryId, x.PresentationsPresentationId });
                     table.ForeignKey(
-                        name: "FK_InvoiceDetails_Invoices_IdInvoice",
-                        column: x => x.IdInvoice,
-                        principalTable: "Invoices",
-                        principalColumn: "InvoiceId",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_CategoryPresentation_Categories_CategoriesCategoryId",
+                        column: x => x.CategoriesCategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CategoryPresentation_Presentations_PresentationsPresentationId",
+                        column: x => x.PresentationsPresentationId,
+                        principalTable: "Presentations",
+                        principalColumn: "PresentationId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -125,32 +124,86 @@ namespace api_movil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Presentations",
+                name: "PresentationProduct",
                 columns: table => new
                 {
-                    PresentationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Measure = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoriesCategoryId = table.Column<int>(type: "int", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: true)
+                    PresentationsPresentationId = table.Column<int>(type: "int", nullable: false),
+                    ProductsProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Presentations", x => x.PresentationId);
+                    table.PrimaryKey("PK_PresentationProduct", x => new { x.PresentationsPresentationId, x.ProductsProductId });
                     table.ForeignKey(
-                        name: "FK_Presentations_Categories_CategoriesCategoryId",
-                        column: x => x.CategoriesCategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        name: "FK_PresentationProduct_Presentations_PresentationsPresentationId",
+                        column: x => x.PresentationsPresentationId,
+                        principalTable: "Presentations",
+                        principalColumn: "PresentationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PresentationProduct_Products_ProductsProductId",
+                        column: x => x.ProductsProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invoices",
+                columns: table => new
+                {
+                    InvoiceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SaleDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClientId = table.Column<string>(type: "nvarchar(11)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invoices", x => x.InvoiceId);
+                    table.ForeignKey(
+                        name: "FK_Invoices_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "ClientId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InvoiceDetails",
+                columns: table => new
+                {
+                    IdDetail = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UnitValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    QuantityProduct = table.Column<int>(type: "int", nullable: false),
+                    Discount = table.Column<float>(type: "real", nullable: false),
+                    TolalDetail = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    IdInvoice = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceDetails", x => x.IdDetail);
+                    table.ForeignKey(
+                        name: "FK_InvoiceDetails_Invoices_IdInvoice",
+                        column: x => x.IdInvoice,
+                        principalTable: "Invoices",
+                        principalColumn: "InvoiceId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Presentations_Products_ProductId",
+                        name: "FK_InvoiceDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryPresentation_PresentationsPresentationId",
+                table: "CategoryPresentation",
+                column: "PresentationsPresentationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_UserName",
@@ -163,44 +216,54 @@ namespace api_movil.Migrations
                 column: "IdInvoice");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Presentations_CategoriesCategoryId",
-                table: "Presentations",
-                column: "CategoriesCategoryId");
+                name: "IX_InvoiceDetails_ProductId",
+                table: "InvoiceDetails",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Presentations_ProductId",
-                table: "Presentations",
-                column: "ProductId");
+                name: "IX_Invoices_ClientId",
+                table: "Invoices",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PresentationProduct_ProductsProductId",
+                table: "PresentationProduct",
+                column: "ProductsProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "CategoryId",
-                unique: true);
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "CategoryPresentation");
 
             migrationBuilder.DropTable(
                 name: "InvoiceDetails");
 
             migrationBuilder.DropTable(
-                name: "Presentations");
-
-            migrationBuilder.DropTable(
-                name: "Users");
+                name: "PresentationProduct");
 
             migrationBuilder.DropTable(
                 name: "Invoices");
 
             migrationBuilder.DropTable(
+                name: "Presentations");
+
+            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
+                name: "Clients");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

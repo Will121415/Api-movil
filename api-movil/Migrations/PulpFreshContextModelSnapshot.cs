@@ -179,6 +179,9 @@ namespace api_movil.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Iva")
                         .HasColumnType("int");
 

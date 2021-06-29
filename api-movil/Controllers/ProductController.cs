@@ -49,6 +49,7 @@ namespace api_movil.Controllers
                 Unit_Price = productoInputModel.Unit_Price,
                 Category = _CategoryService.Find(int.Parse(productoInputModel.CategoryId)).Object,
                 QuantityStock = productoInputModel.QuantityStock,
+                Image = productoInputModel.Image,
                 State = productoInputModel.State,
                 Description = productoInputModel.Description,
                 Presentations = _PresentationService.SelectPresentations(productoInputModel.PresentationsIds).List
@@ -66,6 +67,16 @@ namespace api_movil.Controllers
 
 
             return Ok(response.List);
+        }
+
+        [HttpPut("change-status/{productId}")]
+        public ActionResult<ClientViewModel> ChangeStatus(int productId)
+        {
+            var response =  _productService.ChangeStatus(productId);
+
+            if (response.Object == null) return BadRequest(response.Menssage);
+
+            return Ok(response.Object);
         }
     }
 }
