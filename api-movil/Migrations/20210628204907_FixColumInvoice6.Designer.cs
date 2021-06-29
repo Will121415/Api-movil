@@ -4,14 +4,16 @@ using DAl;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace api_movil.Migrations
 {
     [DbContext(typeof(PulpFreshContext))]
-    partial class PulpFreshContextModelSnapshot : ModelSnapshot
+    [Migration("20210628204907_FixColumInvoice6")]
+    partial class FixColumInvoice6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

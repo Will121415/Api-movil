@@ -12,6 +12,7 @@ namespace api_movil.Models
         public String Name { get; set; }
         public decimal Unit_Price { get; set; }
         public int QuantityStock  { get; set; }
+        public String Image { get; set; }
         public String State { get; set; }
         public int Iva { get; set; }
         public string Description { get; set; }
@@ -26,12 +27,12 @@ namespace api_movil.Models
         public IList<Presentation> Presentations { get; set; }
         public ProductViewModel  (){}
         public ProductViewModel (Product product){
-            
             ProductId = product.ProductId;
             Name = product.Name;
             Unit_Price = product.Unit_Price;
             Category = product.Category;
             QuantityStock = product.QuantityStock;
+            Image = product.Image;
             State = product.State;
             Presentations = product.Presentations;
             
