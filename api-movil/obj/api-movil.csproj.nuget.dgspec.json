@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\api-movil\\api-movil.csproj": {}
+    "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\api-movil\\api-movil.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\api-movil\\api-movil.csproj": {
+    "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\api-movil\\api-movil.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\api-movil\\api-movil.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\api-movil\\api-movil.csproj",
         "projectName": "api-movil",
-        "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\api-movil\\api-movil.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\api-movil\\obj\\",
+        "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\api-movil\\api-movil.csproj",
+        "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\api-movil\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,14 +28,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\BLL.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\BLL.csproj"
               },
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj"
               },
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj"
               }
             }
           }
@@ -83,21 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj": {
+    "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\obj\\",
+        "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,11 +111,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj"
               },
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj"
               }
             }
           }
@@ -144,21 +144,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj": {
+    "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj",
         "projectName": "DAl",
-        "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\obj\\",
+        "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\DAl.csproj",
+        "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\DAl\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -172,8 +172,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj"
+              "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj": {
+                "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj"
               }
             }
           }
@@ -216,21 +216,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj": {
+    "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj",
+        "projectUniqueName": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj",
         "projectName": "Entidad",
-        "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\obj\\",
+        "projectPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\Entidad.csproj",
+        "packagesPath": "C:\\Users\\dubam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dubam\\Documents\\mobile\\Api-movil\\Entidad\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dubam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -276,7 +276,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
