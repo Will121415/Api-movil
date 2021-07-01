@@ -49,6 +49,7 @@ namespace api_movil.Controllers
                 Unit_Price = productoInputModel.Unit_Price,
                 Category = _CategoryService.Find(int.Parse(productoInputModel.CategoryId)).Object,
                 QuantityStock = productoInputModel.QuantityStock,
+                Image = productoInputModel.Image,
                 State = productoInputModel.State,
                 Description = productoInputModel.Description,
                 Presentations = _PresentationService.SelectPresentations(productoInputModel.PresentationsIds).List

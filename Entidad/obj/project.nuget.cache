@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CmiECMGeYW7LmwImW1OiQIXE0Q5e1vFeVEZdZSd3QryyH9X7/YCfOY0/RnSCiWSxWGY12iRZDwzchhVbuybmbQ==",
+  "dgSpecHash": "MY/AcwOIMccBTBDVJCYcsH5xVD2NiS4Gn6EDfcFqI6HWK4dVHB8QTBNOnaRTFvJrZ7LP4wMVQMHWEX1VPTWYBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj",
+  "projectFilePath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\Entidad\\Entidad.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],

@@ -5746,11 +5746,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj",
+      "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\obj\\",
+      "outputPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5767,11 +5767,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj": {
-              "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\DAl\\DAl.csproj"
+            "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\DAl\\DAl.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\DAl\\DAl.csproj"
             },
-            "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj": {
-              "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\Entidad\\Entidad.csproj"
+            "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\Entidad\\Entidad.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\Entidad\\Entidad.csproj"
             }
           }
         }

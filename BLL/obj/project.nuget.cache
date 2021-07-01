@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yBi+i2/RM5kzR36ug660yNNcnvnig3GoHTCRDCF5hPLbeKZaZW/QWfJqvG8G3sX9DhwJJ1UuTUkxjLz9Q5Ausw==",
+  "dgSpecHash": "iQaJH2Q5oDknzJxKu4hqNfkg8ASi91JbNwc78zwqqTK7I5BDkxmGSnUJnGr6r1gSXsmyyEzRDyagUemNqnz+Rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APIS\\Actual-movil\\Api-movil\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\USUARIO\\AndroidStudioProjects\\APPS\\Api-movil\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
